@@ -6,11 +6,13 @@
 package com.rajesh.mavenproject.core.entity;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,8 +22,8 @@ import javax.persistence.TemporalType;
  * @author Dell
  */
 @Entity
-@Table(name = "personnels")
-public class Personnel implements java.io.Serializable {
+@Table(name = "customers")
+public class Customer implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,38 +31,45 @@ public class Personnel implements java.io.Serializable {
     private int id;
 
     @Column(name = "first_name")
-    private String first_name;
+    private String firstName;
 
     @Column(name = "last_name")
-    private String last_name;
+    private String lastName;
 
     @Column(name = "email")
-    private String enmail;
+    private String email;
 
     @Column(name = "contact_no")
     private String contactNo;
 
-    @Column(name = "adddedDate", insertable = false)
+    @Column(name = "added_date", insertable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date adddedDate;
 
-    @Column(name = "modifiedDate", nullable = true)
-        @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "modified_date", nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+
     private Date modifiedDate;
 
     @Column(name = "status")
     private Boolean status;
+    
+    @OneToMany(mappedBy = "customer")
+    private List<Complain> complains;
 
-    public Personnel(int id, String first_name, String last_name, String enmail, String contactNo, Boolean status) {
+    public Customer(int id, String firstName, String lastName, String email, String contactNo, Boolean status) {
         this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.enmail = enmail;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
         this.contactNo = contactNo;
         this.status = status;
     }
 
-    public Personnel() {
+    public Customer() {
+    }
+    public Customer(int id) {
+        this.id=id;
     }
 
     public int getId() {
@@ -71,35 +80,35 @@ public class Personnel implements java.io.Serializable {
         this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getEnmail() {
-        return enmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEnmail(String enmail) {
-        this.enmail = enmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getContact_no() {
+    public String getContactNo() {
         return contactNo;
     }
 
-    public void setContact_no(String contactNo) {
+    public void setContactNo(String contactNo) {
         this.contactNo = contactNo;
     }
 
@@ -127,4 +136,13 @@ public class Personnel implements java.io.Serializable {
         this.status = status;
     }
 
+    public List<Complain> getComplains() {
+        return complains;
+    }
+
+    public void setComplains(List<Complain> complains) {
+        this.complains = complains;
+    }
+
+  
 }

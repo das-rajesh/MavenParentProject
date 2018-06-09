@@ -29,7 +29,7 @@
         </property>
     </bean>
     <security:http auto-config="true">
-        <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>        
+        <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>     
     </security:http>
     <security:authentication-manager>
         <security:authentication-provider>

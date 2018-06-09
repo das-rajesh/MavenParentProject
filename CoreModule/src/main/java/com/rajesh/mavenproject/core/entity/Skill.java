@@ -27,9 +27,8 @@ public class Skill implements java.io.Serializable {
     @Column(name = "name")
 
     private String name;
-    @Column(name = "delete_flag", insertable = false)
-
-    private boolean delete_flag;
+    @Column(name = "delete_flag", nullable = true)
+    private boolean deleteFlag;
 
     public Skill() {
     }
@@ -59,12 +58,12 @@ public class Skill implements java.io.Serializable {
         this.name = name;
     }
 
-    public boolean isDelete_flag() {
-        return delete_flag;
+    public boolean isDeleteFlag() {
+        return deleteFlag;
     }
 
-    public void setDelete_flag(boolean delete_flag) {
-        this.delete_flag = delete_flag;
+    public void setDeleteFlag(boolean deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 
 }

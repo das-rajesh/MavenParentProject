@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Skills 1111</h1>
+        <h1>Skills </h1>
         <ul>
             <c:forEach var="skill" items="${skills}">
                 <li>${skill.name}</li>
